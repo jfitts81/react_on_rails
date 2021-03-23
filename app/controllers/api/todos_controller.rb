@@ -1,9 +1,10 @@
 class Api::TodosController < ApplicationController
-   
+    # html, xml, json, redirect
+    # new, edit, - forms 
     def index 
       render json: Todo.all
     end
-
+    # show - optional
     def show
       render json: Todo.find(params[:id])
     end
@@ -29,6 +30,10 @@ class Api::TodosController < ApplicationController
     end
     private 
       def todo_params
+        # { newTodo: { title: 'react', complete } }
+        # { todo: { title: 'react', complete } }
+        # { todo: { title: "adsfasd", complete: false} }
         params.require(:todo).permit(:title, :complete)
       end
   end
+ 
